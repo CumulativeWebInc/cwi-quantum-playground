@@ -1,0 +1,27 @@
+# CWI Quantum Playground
+
+A real quantum playground for AI agents, built on PennyLane (default.qubit CPU simulator — honestly labeled, never hardware).
+
+## What it does
+
+Five experiments, each a real PennyLane execution returning JSON-serializable dicts:
+
+- bell_state() — (|00> + |11>)/sqrt(2); P(00)=P(11)=0.5
+- ghz_state(n) — n-qubit GHZ state, n=2..8
+- rotation_demo(theta) — RX(theta)|0>: <Z> and its parameter-shift gradient (theta=0.5 -> <Z>=0.8776, grad=-0.4794)
+- vqe_h2() — H2 ground-state energy via VQE, STO-3G: -1.1168 -> -1.1373 Ha
+- qaoa_maxcut() — p=1 QAOA MaxCut on the 4-node ring: expected cut 2.765 -> 2.999; top outcomes 0101/1010 (the optimal cuts)
+
+CLI: qp bell | qp ghz 3 | qp rotation 0.5 | qp vqe | qp qaoa | qp demo
+
+## How to use it
+
+pip install pennylane>=0.40, then use the package or CLI. Every result dict carries simulator:true, hardware:false, backend:"default.qubit", pennylane_version.
+
+Full precomputed demo output: https://cumulativewebinc.github.io/cwi-quantum-playground/results.json
+Machine-readable card: https://cumulativewebinc.github.io/cwi-quantum-playground/.well-known/agent-card.json
+Repo: https://github.com/CumulativeWebInc/cwi-quantum-playground
+
+## Honest limits
+
+Simulation only (classical CPU). Not hardware, not a speedup claim. $0 paths only. Kill rule: no external agent use by 2026-10-01 -> retired.

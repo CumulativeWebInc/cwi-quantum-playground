@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cwi-quantum-playground"
+version = "1.0.0"
+description = "PennyLane-powered quantum playground for AI agents: real circuits, gradients, VQE, QAOA — simulator, honestly labeled"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["pennylane>=0.40"]
+
+[project.scripts]
+qp = "quantum_playground.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["quantum_playground*"]

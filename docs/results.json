@@ -1,0 +1,194 @@
+{
+  "playground": "cwi-quantum-playground",
+  "experiments": {
+    "bell_state": {
+      "circuit": "bell_state",
+      "wires": 2,
+      "backend": "default.qubit",
+      "simulator": true,
+      "shots": null,
+      "pennylane_version": "0.45.1",
+      "hardware": false,
+      "note": "Result of a real state-vector simulation on PennyLane default.qubit (CPU). Not quantum hardware.",
+      "probs": {
+        "00": 0.4999999999999999,
+        "01": 0.0,
+        "10": 0.0,
+        "11": 0.4999999999999999
+      },
+      "expval_z0": 0.0,
+      "expval_z1": 0.0,
+      "entangled": true
+    },
+    "ghz_state_n3": {
+      "circuit": "ghz_state(n=3)",
+      "wires": 3,
+      "backend": "default.qubit",
+      "simulator": true,
+      "shots": null,
+      "pennylane_version": "0.45.1",
+      "hardware": false,
+      "note": "Result of a real state-vector simulation on PennyLane default.qubit (CPU). Not quantum hardware.",
+      "n": 3,
+      "probs": {
+        "000": 0.4999999999999999,
+        "001": 0.0,
+        "010": 0.0,
+        "011": 0.0,
+        "100": 0.0,
+        "101": 0.0,
+        "110": 0.0,
+        "111": 0.4999999999999999
+      },
+      "p_all_zero": 0.4999999999999999,
+      "p_all_one": 0.4999999999999999
+    },
+    "rotation_demo": {
+      "circuit": "rotation_demo",
+      "wires": 1,
+      "backend": "default.qubit",
+      "simulator": true,
+      "shots": null,
+      "pennylane_version": "0.45.1",
+      "hardware": false,
+      "note": "Result of a real state-vector simulation on PennyLane default.qubit (CPU). Not quantum hardware.",
+      "theta": 0.5,
+      "expval_z": 0.8775825618903726,
+      "gradient": -0.4794255386042031,
+      "diff_method": "parameter-shift"
+    },
+    "vqe_h2": {
+      "circuit": "vqe_h2",
+      "wires": 4,
+      "backend": "default.qubit",
+      "simulator": true,
+      "shots": null,
+      "pennylane_version": "0.45.1",
+      "hardware": false,
+      "note": "Result of a real state-vector simulation on PennyLane default.qubit (CPU). Not quantum hardware.",
+      "bond_length_angstrom": 0.74,
+      "basis": "sto-3g",
+      "ansatz": "single double-excitation from Hartree-Fock |1100>",
+      "optimizer": "gradient-descent stepsize=0.4",
+      "steps": 10,
+      "energy_initial_hartree": -1.116759307555259,
+      "energy_final_hartree": -1.1372755464686324,
+      "theta_final": 0.22104245805118175,
+      "energy_trace_hartree": [
+        -1.116759307555259,
+        -1.1278091142384015,
+        -1.1329344014765974,
+        -1.1352923700902546,
+        -1.1363730951490165,
+        -1.1368675617314419,
+        -1.1370936158696705,
+        -1.1371969228307068,
+        -1.1372441263415445,
+        -1.1372656931522016,
+        -1.1372755464686324
+      ],
+      "unit": "hartree"
+    },
+    "qaoa_maxcut": {
+      "circuit": "qaoa_maxcut(p=1)",
+      "wires": 4,
+      "backend": "default.qubit",
+      "simulator": true,
+      "shots": null,
+      "pennylane_version": "0.45.1",
+      "hardware": false,
+      "note": "Result of a real state-vector simulation on PennyLane default.qubit (CPU). Not quantum hardware.",
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "p": 1,
+      "steps": 40,
+      "expected_cut_initial": 2.7651474012342847,
+      "expected_cut_final": 2.99858026068573,
+      "expected_cut_trace": [
+        2.7651474012342847,
+        2.9316416591861687,
+        2.9512764045229414,
+        2.9573089456111896,
+        2.971314713804322,
+        2.968785819675362,
+        2.9517505874996015,
+        2.9404709207456614,
+        2.9493987059550824,
+        2.9723214417230914,
+        2.992639083319072,
+        2.9984703928159755,
+        2.9913669609254,
+        2.9823280260703853,
+        2.9792424671080324,
+        2.981682682058063,
+        2.9850917638738474,
+        2.986570921361727,
+        2.987368346565197,
+        2.9902314211934033,
+        2.995102595334833,
+        2.9987506139164406,
+        2.9982994087451176,
+        2.9944136020138554,
+        2.990788548834831,
+        2.9905131665956644,
+        2.993387038597379,
+        2.9967465703867306,
+        2.9983264026237535,
+        2.9981316745899766,
+        2.9976519853125314,
+        2.9977541455511965,
+        2.9979419578483633,
+        2.997507078962651,
+        2.996765669330968,
+        2.9967747182894735,
+        2.997948438067909,
+        2.9994225710336044,
+        2.999988744878586,
+        2.9994167943870966,
+        2.99858026068573
+      ],
+      "angles_final": {
+        "gamma": [
+          0.8028675266012683
+        ],
+        "beta": [
+          0.4027616842329841
+        ]
+      },
+      "most_likely_bitstrings": [
+        {
+          "bitstring": "0101",
+          "probability": 0.2676602615846698
+        },
+        {
+          "bitstring": "1010",
+          "probability": 0.2676602615846698
+        },
+        {
+          "bitstring": "0011",
+          "probability": 0.07790209001247664
+        },
+        {
+          "bitstring": "0110",
+          "probability": 0.07790209001247664
+        }
+      ]
+    }
+  }
+}

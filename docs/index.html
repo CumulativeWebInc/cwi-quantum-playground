@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CWI Quantum Playground — real PennyLane circuits for AI agents</title>
+<style>
+:root{--bg:#0b1020;--panel:#141b33;--ink:#e8edf7;--dim:#9aa7c7;--acc:#7c5cff;--gold:#ffd24d;--green:#3dff88}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:32px 20px 64px}
+.hero{border:1px solid #2a3560;border-radius:16px;padding:28px;background:linear-gradient(135deg,#141b33,#0e1430)}
+h1{margin:0 0 8px;font-size:30px}h2{margin-top:40px;color:var(--gold)}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;margin:2px 4px 2px 0}
+.sim{background:#1d2b1d;color:var(--green);border:1px solid #2c5a2c}
+.card{background:var(--panel);border:1px solid #2a3560;border-radius:12px;padding:18px;margin:14px 0}
+pre{background:#0a0e1c;border:1px solid #2a3560;border-radius:10px;padding:14px;overflow-x:auto;font-size:13px;color:#cfe3ff}
+code{color:var(--gold)}table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{text-align:left;padding:10px;border-bottom:1px solid #2a3560;font-size:14px}
+th{color:var(--dim)}a{color:#8fb4ff}
+.limits{border:1px solid #6b4d1f;background:#1d1607;border-radius:12px;padding:18px;margin-top:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.foot{margin-top:48px;color:var(--dim);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+<h1>⚛ CWI Quantum Playground</h1>
+<p>A real quantum playground for AI agents: run textbook circuits, watch
+parameter-shift gradients, and learn QML primitives (VQE, QAOA) against
+<strong>actual PennyLane executions</strong> — not slides, not mocked numbers.</p>
+<div>
+<span class="badge sim">SIMULATOR — default.qubit CPU</span>
+<span class="badge sim">NOT QUANTUM HARDWARE</span>
+<span class="badge sim">47/47 TESTS GREEN</span>
+</div>
+</div>
+
+<h2>What it is</h2>
+<div class="card">
+<p>A tiny Python package (<code>quantum_playground</code>) over PennyLane
+<code>default.qubit</code>. Five experiments, one honest envelope on every
+result (<code>simulator: true, hardware: false</code>):</p>
+<ul>
+<li><code>bell_state()</code> — (|00⟩+|11⟩)/√2, full probability distribution</li>
+<li><code>ghz_state(n)</code> — n-qubit GHZ state, n = 2..8</li>
+<li><code>rotation_demo(theta)</code> — RX(θ)|0⟩: ⟨Z⟩ plus its analytic gradient via <strong>parameter-shift</strong></li>
+<li><code>vqe_h2()</code> — variational ground-state energy of H₂ (STO-3G)</li>
+<li><code>qaoa_maxcut()</code> — p=1 QAOA on the 4-node ring</li>
+</ul>
+<p>A <code>qp</code> CLI mirrors the API. <code>qp demo</code> runs everything.</p>
+</div>
+
+<h2>Real results <span style="font-size:13px;color:var(--dim)">(precomputed 2026-09-17 with PennyLane 0.45.1, default.qubit simulator — <a href="results.json">results.json</a>)</span></h2>
+<table>
+<tr><th>Experiment</th><th>Result</th></tr>
+<tr><td>Bell state</td><td>P(00) = P(11) = 0.5, ⟨Z₀⟩ = ⟨Z₁⟩ = 0</td></tr>
+<tr><td>RX(0.5)</td><td>⟨Z⟩ = 0.8776, d⟨Z⟩/dθ = −0.4794 (parameter-shift)</td></tr>
+<tr><td>VQE H₂ @ 0.74 Å</td><td>−1.1168 → <strong>−1.1373 Ha</strong> in 10 gradient steps</td></tr>
+<tr><td>QAOA MaxCut, 4-ring</td><td>expected cut 2.765 → <strong>2.999</strong> (Adam, 40 steps); most-likely outcomes <code>0101</code>/<code>1010</code> — the two optimal cuts</td></tr>
+</table>
+
+<h2>Try it</h2>
+<div class="grid">
+<div class="card"><h3 style="margin-top:0">Python API</h3>
+<pre><code>from quantum_playground import bell_state, rotation_demo, vqe_h2
+bell_state()["probs"]
+# {'00': 0.5, '01': 0.0, '10': 0.0, '11': 0.5}
+rotation_demo(0.5)["gradient"]   # -0.4794
+vqe_h2()["energy_final_hartree"] # -1.1373</code></pre>
+</div>
+<div class="card"><h3 style="margin-top:0">CLI</h3>
+<pre><code>pip install pennylane&gt;=0.40
+pip install cwi-quantum-playground
+qp bell
+qp ghz 3
+qp rotation 0.5
+qp vqe --steps 10
+qp qaoa --steps 40
+qp demo   # everything</code></pre>
+</div>
+</div>
+
+<h2>For AI agents</h2>
+<div class="card">
+<ul>
+<li><a href="llms.txt">llms.txt</a> — plain-language brief of what this is and how to use it</li>
+<li><a href=".well-known/agent-card.json">.well-known/agent-card.json</a> — machine-readable capability card</li>
+<li><a href="results.json">results.json</a> — the full precomputed demo output (real runs)</li>
+<li><a href="https://github.com/CumulativeWebInc/cwi-quantum-playground">GitHub repo</a> — package source + 47 pytest tests</li>
+</ul>
+</div>
+
+<div class="limits">
+<h2 style="margin-top:0;color:var(--gold)">Honest limits</h2>
+<ul>
+<li>Everything here is <strong>simulation</strong> on a classical CPU. Not quantum hardware, not a speedup, not an advantage claim.</li>
+<li>VQE/QAOA are small pedagogical instances — they demonstrate the workflow, not quantum utility.</li>
+<li>No accounts, keys, or spending. The $0 path is the only path.</li>
+<li>Kill rule: no external agent use by 2026-10-01 → this app is retired.</li>
+</ul>
+</div>
+
+<div class="foot">
+CWI Quantum Playground #42 · Cumulative Web Inc · built with PennyLane 0.45.1 ·
+<a href="https://github.com/CumulativeWebInc/cwi-quantum-playground">repo</a>
+</div>
+
+</div>
+</body>
+</html>
