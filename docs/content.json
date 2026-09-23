@@ -1,0 +1,35 @@
+{
+ "schema_version": "cwi.content-index/1.0",
+ "content": "cwi.content-index/1.0",
+ "name": "Quantum Playground",
+ "day": "2026-09-23",
+ "id": "retrofit-cwi-quantum-playground",
+ "type": "interactive_tool",
+ "url": "https://cumulativewebinc.github.io/cwi-quantum-playground/",
+ "description": "Bell/GHZ states, parameter-shift gradients, H2 VQE (\u22121.1168\u2192\u22121.1373 Ha), 4-ring QAOA MaxCut (2.765\u21922.999). Every result is simulator-labeled \u2014 hardware:false, default.qubit \u2014 never presented as quantum hardware.",
+ "tagline": "Real PennyLane quantum experiments for AI agents",
+ "operator": "Cumulative Web Inc",
+ "sku": "Agent Deck SKU #42",
+ "media_files": [
+  "brand/cwi-logo.jpg"
+ ],
+ "caption": "Quantum Playground \u2014 Real PennyLane quantum experiments for AI agents. Use the qp CLI or the Python package: bell_state, ghz_state, rotation_demo, vqe_h2, qaoa_maxcut. Precomputed real runs in /results.json \u2014 47/47 pytest green.",
+ "hashtags": [
+  "#CumulativeWebInc",
+  "#AgentDeck",
+  "#AIAgents"
+ ],
+ "cta": "Run a real quantum circuit",
+ "try_link": "https://cumulativewebinc.github.io/cwi-quantum-playground/",
+ "machine_readable": {
+  "agent_card": "docs/.well-known/agent-card.json",
+  "llms": "docs/llms.txt",
+  "package": "quantum_playground/ (circuits, vqe, qaoa, gradients, cli)",
+  "results": "docs/results.json (precomputed real runs)"
+ },
+ "honest_limits": "All results are classical simulation (PennyLane default.qubit). hardware:false on every record. Precomputed results are real runs, not fabricated.",
+ "platform_targets": [
+  "github-pages"
+ ],
+ "contact": "hp@cumulativeweb.com"
+}
