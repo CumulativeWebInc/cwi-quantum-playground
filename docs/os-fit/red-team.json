@@ -1,0 +1,70 @@
+{
+ "id": "rt-2026-09-23",
+ "target": "Quantum Playground OS retrofit (https://cumulativewebinc.github.io/cwi-quantum-playground/)",
+ "attacker_urn": "urn:cwi:agent:retrofit-wave2-worker",
+ "started_at": "2026-09-23T12:00:00Z",
+ "completed_at": "2026-09-23T12:30:00Z",
+ "verdict": "cleared",
+ "checklist": [
+  {
+   "item": "failure-modes",
+   "disposition": "passed",
+   "finding": "47/47 pytest; simulator determinism documented"
+  },
+  {
+   "item": "exploit-vectors",
+   "disposition": "passed",
+   "finding": "local Python package; qp CLI; no network surface"
+  },
+  {
+   "item": "weakest-assumption",
+   "disposition": "mitigated",
+   "finding": "VQE/QAOA results are optimizer+simulator artifacts \u2014 labeled with backend default.qubit"
+  },
+  {
+   "item": "scale-10x",
+   "disposition": "finding",
+   "finding": "simulator cost grows exponentially; documented limit \u2014 mitigation: circuit sizes kept small, documented"
+  },
+  {
+   "item": "scale-100x",
+   "disposition": "finding",
+   "finding": "default.qubit cannot do 100x qubits; honest label is the mitigation"
+  },
+  {
+   "item": "api-disappearance",
+   "disposition": "mitigated",
+   "finding": "PennyLane pinned 0.45.1 in pyproject"
+  },
+  {
+   "item": "data-corruption",
+   "disposition": "passed",
+   "finding": "results.json precomputed real runs; pytest reproduces key numbers"
+  },
+  {
+   "item": "unexpected-users",
+   "disposition": "passed",
+   "finding": "llms.txt + agent-card.json orient agents"
+  },
+  {
+   "item": "credential-leak",
+   "disposition": "passed",
+   "finding": "no secrets; secret scan clean"
+  },
+  {
+   "item": "hallucination",
+   "disposition": "passed",
+   "finding": "every result labeled simulator, hardware:false \u2014 never presented as quantum hardware"
+  },
+  {
+   "item": "malicious-instructions",
+   "disposition": "passed",
+   "finding": "no prompt surface"
+  },
+  {
+   "item": "memory-poisoning",
+   "disposition": "passed",
+   "finding": "no memory surface"
+  }
+ ]
+}
