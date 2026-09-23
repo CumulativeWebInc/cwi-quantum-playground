@@ -1,1 +1,33 @@
-{"capabilities":["bell_state","ghz_state","rotation_demo","vqe_h2","qaoa_maxcut"],"description":"PennyLane-powered quantum playground for AI agents: real circuit executions (Bell, GHZ, parameter-shift gradients, VQE on H2, QAOA MaxCut) on the default.qubit CPU simulator. Simulation only — never hardware.","interfaces":{"cli":"qp bell | qp ghz 3 | qp rotation 0.5 | qp vqe | qp qaoa | qp demo","llms_txt":"https://cumulativewebinc.github.io/cwi-quantum-playground/llms.txt","python":"from quantum_playground import bell_state, ghz_state, rotation_demo, vqe_h2, qaoa_maxcut, demo","results":"https://cumulativewebinc.github.io/cwi-quantum-playground/results.json"},"limits":["Classical CPU simulation only; no quantum hardware; no speedup claims.","Kill rule: no external agent use by 2026-10-01 -> retired."],"name":"CWI Quantum Playground","provider":"Cumulative Web Inc","repo":"https://github.com/CumulativeWebInc/cwi-quantum-playground","truth":{"backend":"default.qubit","hardware":false,"pennylane_version":"0.45.1","simulator":true,"tests":"47/47 pytest green"},"url":"https://cumulativewebinc.github.io/cwi-quantum-playground/","version":"1.0.0"}
+{
+ "schema_version": "1.0",
+ "capabilities": [
+  "bell_state",
+  "ghz_state",
+  "rotation_demo",
+  "vqe_h2",
+  "qaoa_maxcut"
+ ],
+ "description": "PennyLane-powered quantum playground for AI agents: real circuit executions (Bell, GHZ, parameter-shift gradients, VQE on H2, QAOA MaxCut) on the default.qubit CPU simulator. Simulation only \u2014 never hardware.",
+ "interfaces": {
+  "cli": "qp bell | qp ghz 3 | qp rotation 0.5 | qp vqe | qp qaoa | qp demo",
+  "llms_txt": "https://cumulativewebinc.github.io/cwi-quantum-playground/llms.txt",
+  "python": "from quantum_playground import bell_state, ghz_state, rotation_demo, vqe_h2, qaoa_maxcut, demo",
+  "results": "https://cumulativewebinc.github.io/cwi-quantum-playground/results.json"
+ },
+ "limits": [
+  "Classical CPU simulation only; no quantum hardware; no speedup claims.",
+  "Kill rule: no external agent use by 2026-10-01 -> retired."
+ ],
+ "name": "CWI Quantum Playground",
+ "provider": "Cumulative Web Inc",
+ "repo": "https://github.com/CumulativeWebInc/cwi-quantum-playground",
+ "truth": {
+  "backend": "default.qubit",
+  "hardware": false,
+  "pennylane_version": "0.45.1",
+  "simulator": true,
+  "tests": "47/47 pytest green"
+ },
+ "url": "https://cumulativewebinc.github.io/cwi-quantum-playground/",
+ "version": "1.0.0"
+}
