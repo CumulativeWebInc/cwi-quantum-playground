@@ -10,5 +10,6 @@
     "name": "Cumulative Web Inc",
     "url": "https://cumulativeweb.com/"
   },
-  "description": "Quantum computing experiments for AI agents built on PennyLane, including Bell/GHZ states and VQE demos."
+  "description": "Quantum computing experiments for AI agents built on PennyLane, including Bell/GHZ states and VQE demos.",
+  "schema_version": "1.0.0"
 }
